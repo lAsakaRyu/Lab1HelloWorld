@@ -20,14 +20,19 @@ public class MainActivity extends AppCompatActivity {
         textViewMessage = (TextView) findViewById(R.id.textViewMessage);
     }
     public void displayMessage(View view){
-        String name = editTextName.getText().toString();
-        int age = Integer.parseInt(editTextAge.getText().toString());
-        textViewMessage.setText("Hi "+name+", you will be "+(age+1)+" year old in 2018.");
+        String name = "<name>";
+        if(!editTextName.getText().toString().isEmpty())
+            name = editTextName.getText().toString();
+        String age = "#";
+        if(!editTextAge.getText().toString().isEmpty()) {
+            age = String.valueOf(Integer.parseInt(editTextAge.getText().toString())+1);
+        }
+        textViewMessage.setText("Hi "+name+", you will be "+age+" year old in 2018.");
     }
     public void resetMessage(View view){
         editTextName.setText("");
         editTextAge.setText("");
-        textViewMessage.setText("Hello World!");
+        textViewMessage.setText(R.string.defaultMessage);
     }
 
 }
